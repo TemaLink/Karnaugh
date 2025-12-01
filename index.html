@@ -9,493 +9,497 @@
     <title>Карты Карно | Дискретная математика</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #6d8ef7;
-            --primary-light: #8ba6f9;
-            --secondary: #5d7af5;
-            --dark: #1a1f36;
-            --light: #f8f9fa;
-            --gray: #8b98b5;
-            --success: #4cc9f0;
-            --bg-color: #1e2338;
-            --card-bg: #2a3048;
-            --text-color: #e8eaf0;
-            --text-muted: #b0b7cc;
-            --border-radius: 12px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
-        }
+:root {
+    --primary: #6d8ef7;
+    --primary-light: #8ba6f9;
+    --secondary: #5d7af5;
+    --dark: #1a1f36;
+    --light: #f8f9fa;
+    --gray: #8b98b5;
+    --success: #4cc9f0;
+    --bg-color: #1e2338;
+    --card-bg: #2a3048;
+    --text-color: #e8eaf0;
+    --text-muted: #b0b7cc;
+    --border-radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        header {
-            background: linear-gradient(135deg, #3a4a8c 0%, #2a3668 100%);
-            padding: 2.5rem 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
+header {
+    background: linear-gradient(135deg, #3a4a8c 0%, #2a3668 100%);
+    padding: 2.5rem 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
 
-            header h1 {
-                font-size: 2.8rem;
-                font-weight: 700;
-                margin-bottom: 0.5rem;
-                letter-spacing: -0.5px;
-                position: relative;
-            }
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 
-        .tagline {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
+    header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+        position: relative;
+    }
 
-        nav {
-            background: var(--card-bg);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border-radius: 0 0 30px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
 
-        .nav-container {
-            position: relative;
-        }
+nav {
+    background: var(--card-bg);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border-radius: 0 0 30px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) transparent;
-            padding-bottom: 5px;
-            -webkit-overflow-scrolling: touch;
-        }
+.nav-container {
+    position: relative;
+}
 
-            .nav-links::-webkit-scrollbar {
-                height: 4px;
-            }
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+}
 
-            .nav-links::-webkit-scrollbar-track {
-                background: transparent;
-            }
+/* Стили для скроллбара */
+.nav-links::-webkit-scrollbar {
+    height: 4px;
+}
 
-            .nav-links::-webkit-scrollbar-thumb {
-                background: var(--primary);
-                border-radius: 2px;
-            }
+.nav-links::-webkit-scrollbar-track {
+    background: transparent;
+}
 
-                .nav-links::-webkit-scrollbar-thumb:hover {
-                    background: var(--primary-light);
-                }
+.nav-links::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 2px;
+}
 
-        .nav-link {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            white-space: nowrap;
-            flex-shrink: 0;
-            font-size: 0.9rem;
-        }
+.nav-links::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
 
-            .nav-link:before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-                transition: left 0.5s;
-            }
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+}
 
-            .nav-link:hover:before {
-                left: 100%;
-            }
+    .nav-link:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s;
+    }
 
-            .nav-link:hover {
-                background: var(--primary);
-                color: white;
-                transform: translateY(-2px);
-                border-color: var(--primary);
-            }
+    .nav-link:hover:before {
+        left: 100%;
+    }
 
-        main {
-            padding-bottom: 3rem;
-        }
+    .nav-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+        border-color: var(--primary);
+    }
 
-        .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--primary);
-        }
+main {
+    padding-bottom: 3rem;
+}
 
-            .card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            }
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary);
+}
 
-        h2 {
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-            h2:after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 50px;
-                height: 3px;
-                background: var(--primary);
-                border-radius: 3px;
-            }
+h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
 
-        h3 {
-            color: var(--text-color);
-            margin: 1.5rem 0 1rem 0;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
+    h2:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 3px;
+    }
 
-        h4 {
-            color: var(--text-color);
-            margin: 1.2rem 0 0.5rem 0;
-            font-weight: 600;
-        }
+h3 {
+    color: var(--text-color);
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
 
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-        }
+h4 {
+    color: var(--text-color);
+    margin: 1.2rem 0 0.5rem 0;
+    font-weight: 600;
+}
 
-        .inventor-card {
-            display: flex;
+p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.inventor-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .inventor-card:hover {
+        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+.inventor-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border-top: 3px solid var(--primary-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .feature h4 {
+        color: var(--primary-light);
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .feature h4:before {
+            content: '✓';
+            display: inline-flex;
             align-items: center;
-            gap: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin: 1.5rem 0;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-            .inventor-card:hover {
-                transform: translateX(5px);
-                background: rgba(255, 255, 255, 0.08);
-            }
-
-        .inventor-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            border-top: 3px solid var(--primary-light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-            .feature:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-                background: rgba(255, 255, 255, 0.08);
-            }
-
-            .feature h4 {
-                color: var(--primary-light);
-                margin-bottom: 0.8rem;
-                display: flex;
-                align-items: center;
-            }
-
-                .feature h4:before {
-                    content: '✓';
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 24px;
-                    height: 24px;
-                    background: var(--primary);
-                    color: white;
-                    border-radius: 50%;
-                    margin-right: 10px;
-                    font-size: 0.8rem;
-                }
-
-        .info-box {
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(58, 74, 140, 0.1) 100%);
-            border-left: 5px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin: 1.5rem 0;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-            .info-box:hover {
-                transform: translateX(5px);
-            }
-
-        .concept-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-            .concept-list li {
-                margin-bottom: 0.8rem;
-                padding-left: 1.5rem;
-                position: relative;
-                color: var(--text-muted);
-            }
-
-                .concept-list li:before {
-                    content: "→";
-                    color: var(--primary);
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
-
-        .steps {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin: 1.5rem 0;
-            counter-reset: step;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .step {
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-            color: var(--text-muted);
-        }
-
-            .step:before {
-                content: counter(step);
-                counter-increment: step;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background: var(--primary);
-                color: white;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 0.9rem;
-                font-weight: bold;
-                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            }
-
-        .advantages {
-            background: linear-gradient(135deg, rgba(76, 201, 240, 0.1) 0%, rgba(67, 97, 238, 0.1) 100%);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--success);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-            .advantages:hover {
-                transform: translateX(5px);
-            }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2.5rem 0;
-            margin-top: 3rem;
-            border-radius: 30px 30px 0 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: left;
-        }
-
-        .footer-section h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-section p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 0.5rem;
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-        }
-
-        .math-symbol {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin: 0 0.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
-        }
-
-        .section-icon {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
             margin-right: 10px;
+            font-size: 0.8rem;
+        }
+
+.info-box {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(58, 74, 140, 0.1) 100%);
+    border-left: 5px solid var(--primary);
+    padding: 1.5rem;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    margin: 1.5rem 0;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+    .info-box:hover {
+        transform: translateX(5px);
+    }
+
+.concept-list {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+    .concept-list li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        color: var(--text-muted);
+    }
+
+        .concept-list li:before {
+            content: "→";
+            color: var(--primary);
             font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
-        .rouge-script-regular {
-            font-family: "Rouge Script", cursive;
-            font-weight: 400;
-            font-style: normal;
-        }
+.steps {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    counter-reset: step;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-        .karnaugh-cell {
-            width: 75px;
-            height: 75px;
-            text-align: center;
-            vertical-align: middle;
-        }
+.step {
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+    color: var(--text-muted);
+}
 
-        .tables-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+    .step:before {
+        content: counter(step);
+        counter-increment: step;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--primary);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
 
-        .karnaugh-table-medium {
-            width: 250px;
-            height: 250px;
-            border-collapse: collapse;
-        }
+.advantages {
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.1) 0%, rgba(67, 97, 238, 0.1) 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--success);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-        .karnaugh-cell-medium {
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 14px;
-        }
+    .advantages:hover {
+        transform: translateX(5px);
+    }
 
-        table {
-            border: none !important;
-            border-collapse: collapse;
-        }
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 0;
+    margin-top: 3rem;
+    border-radius: 30px 30px 0 0;
+}
 
-        .karnaugh-table-medium {
-            border: none !important;
-        }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
 
-        .karnaugh-cell, .karnaugh-cell-medium {
-            border: 1px solid var(--text-muted) !important;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
+.footer-section h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
 
-        th, td {
-            border: 1px solid var(--text-muted) !important;
-            color: var(--text-color);
-        }
+.footer-section p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+}
 
-        @media (min-width: 769px) {
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                overflow-x: visible;
-            }
+.copyright {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+}
 
-            .nav-link {
-                font-size: 1rem;
-                padding: 0.6rem 1.2rem;
-            }
-        }
+.math-symbol {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
 
+.section-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.rouge-script-regular {
+    font-family: "Rouge Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Стили для таблиц Карно */
+.karnaugh-cell {
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.karnaugh-table-medium {
+    width: 250px;
+    height: 250px;
+    border-color: white;
+    border-collapse: collapse;
+}
+
+.karnaugh-cell-medium {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+/* Десктопные стили */
+@media (min-width: 769px) {
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-x: visible;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+    
+    /* Позиционирование для десктопа */
+    .steps[style*="margin-left"] {
+        position: absolute;
+    }
+}
+
+/* ========== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ========== */
         @media (max-width: 768px) {
+            /* Общие стили */
+            .container {
+                padding: 0 15px;
+            }
+
             header {
-                padding: 2rem 0;
+                padding: 1.5rem 0;
             }
 
                 header h1 {
-                    font-size: 2.2rem;
+                    font-size: 2rem;
                 }
 
             .tagline {
@@ -503,69 +507,7 @@
                 padding: 0 1rem;
             }
 
-            .nav-links {
-                padding: 0.5rem 0;
-            }
-
-            .nav-link {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
-                border-radius: 15px;
-            }
-
-            .card {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.6rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-            }
-
-            .inventor-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .inventor-photo {
-                width: 100px;
-                height: 100px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .step {
-                padding-left: 2.5rem;
-            }
-
-                .step:before {
-                    width: 25px;
-                    height: 25px;
-                    font-size: 0.8rem;
-                }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                text-align: center;
-            }
-
-            .section-icon {
-                width: 35px;
-                height: 35px;
-                line-height: 35px;
-                margin-right: 8px;
-                font-size: 0.9rem;
-            }
-
+            /* Навигация */
             .nav-links {
                 padding: 0.5rem 0;
                 gap: 0.3rem;
@@ -575,9 +517,9 @@
                 padding: 0.5rem 0.8rem;
                 font-size: 0.8rem;
                 border-radius: 15px;
-                white-space: nowrap;
             }
 
+            /* Карточки */
             .card {
                 padding: 1.2rem;
                 margin-bottom: 1.5rem;
@@ -593,6 +535,7 @@
                 margin: 1.2rem 0 0.8rem 0;
             }
 
+            /* Карточка изобретателя */
             .inventor-card {
                 flex-direction: column;
                 text-align: center;
@@ -605,6 +548,7 @@
                 height: 100px;
             }
 
+            /* Сетка фич */
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -613,6 +557,12 @@
 
             .feature {
                 padding: 1.2rem;
+            }
+
+            /* Шаги - только для .steps без inline стилей */
+            .steps:not([style]) {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
             }
 
             .step {
@@ -626,49 +576,77 @@
                     font-size: 0.8rem;
                 }
 
+            /* Основные таблицы в методе */
+            table {
+                width: 100% !important;
+                max-width: 100%;
+                font-size: 12px;
+                display: block;
+                overflow-x: auto;
+            }
+
             .karnaugh-cell {
-                width: 50px;
-                height: 50px;
-                font-size: 12px;
+                min-width: 40px;
+                min-height: 40px;
+                font-size: 11px;
+                padding: 2px;
             }
 
-            .karnaugh-table-medium {
-                width: 200px;
-                height: 200px;
-            }
-
-            .karnaugh-cell-medium {
-                width: 40px;
-                height: 40px;
-                font-size: 12px;
-            }
-
-            .tables-container {
+            /* Таблицы в контейнерах */
+            section#method .tables-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 gap: 20px;
             }
 
-            .steps {
+            section#method .karnaugh-table-medium {
+                width: 280px !important;
+                height: auto !important;
+                margin: 0 auto;
+            }
+
+            section#method .karnaugh-cell-medium {
+                width: 35px;
+                height: 35px;
+                font-size: 11px;
+                padding: 2px;
+            }
+
+            /* Контейнеры с таблицами Карно */
+            .tables-container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 20px !important;
+            }
+
+            /* Исправление для шагов с inline стилями - ТОЛЬКО те, что рядом с таблицами */
+            section#method .steps[style*="margin-left"],
+            section#method .steps[style*="margin-top"],
+            section#method .steps[style*="width"] {
+                position: relative !important;
                 width: 100% !important;
                 height: auto !important;
-                margin-left: 0 !important;
-                margin-top: 20px !important;
-                padding: 1.2rem;
+                margin: 20px 0 !important;
+                padding: 1.2rem !important;
+                left: 0 !important;
+                top: 0 !important;
             }
 
-            table {
+            /* Обеспечиваем правильное отображение секций */
+            section#method > .steps:not([style]) {
+                margin: 1.5rem 0;
+            }
+
+            /* Видео */
+            iframe {
                 width: 100% !important;
-                font-size: 12px;
+                max-width: 100%;
+                height: 250px !important;
             }
 
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-
+            /* Футер */
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -679,6 +657,7 @@
                 text-align: center;
             }
 
+            /* Иконки разделов */
             .section-icon {
                 width: 30px;
                 height: 30px;
@@ -687,23 +666,19 @@
                 font-size: 0.8rem;
             }
 
-            iframe {
-                width: 100% !important;
-                height: 250px !important;
-                max-width: 100%;
-            }
-
+            /* Математические символы */
             .math-symbol {
                 font-size: 0.9rem;
                 padding: 0.1rem 0.3rem;
             }
 
+            /* Инфобоксы */
             .info-box, .advantages {
                 padding: 1.2rem;
                 margin: 1.2rem 0;
             }
         }
-
+        /* Очень маленькие экраны */
         @media (max-width: 480px) {
             .container {
                 padding: 0 10px;
@@ -735,19 +710,18 @@
             }
 
             .karnaugh-cell {
-                width: 40px;
-                height: 40px;
+                min-width: 35px;
+                min-height: 35px;
                 font-size: 10px;
             }
 
-            .karnaugh-table-medium {
-                width: 180px;
-                height: 180px;
+            section#method .karnaugh-table-medium {
+                width: 240px !important;
             }
 
-            .karnaugh-cell-medium {
-                width: 35px;
-                height: 35px;
+            section#method .karnaugh-cell-medium {
+                width: 30px;
+                height: 30px;
                 font-size: 10px;
             }
 
@@ -756,6 +730,7 @@
             }
         }
 
+        /* Ландшафтная ориентация */
         @media (max-width: 768px) and (orientation: landscape) {
             .nav-links {
                 flex-wrap: nowrap;
@@ -766,8 +741,19 @@
                 flex-direction: row;
                 text-align: left;
             }
+
+            section#method .tables-container {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 220px !important;
+            }
         }
 
+        /* Очень маленькие телефоны */
         @media (max-width: 350px) {
             html {
                 font-size: 14px;
@@ -777,7 +763,264 @@
                 font-size: 0.7rem;
                 padding: 0.3rem 0.6rem;
             }
+
+            .karnaugh-cell {
+                min-width: 30px;
+                min-height: 30px;
+                font-size: 9px;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 200px !important;
+            }
+
+            section#method .karnaugh-cell-medium {
+                width: 25px;
+                height: 25px;
+                font-size: 9px;
+            }
         }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+                text-align: center;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .data-table thead th {
+                background: rgba(109, 142, 247, 0.2);
+                color: var(--primary-light);
+                font-weight: 600;
+            }
+
+            .data-table tbody tr:nth-child(even) {
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .data-table tbody tr:hover {
+                background: rgba(109, 142, 247, 0.1);
+            }
+
+        /* Контейнеры для карт Карно */
+        .karnaugh-container {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .karnaugh-table {
+            border-collapse: collapse;
+            border: 2px solid var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+            .karnaugh-table.small {
+                max-width: 280px;
+            }
+
+        .karnaugh-header {
+            padding: 12px 8px;
+            background: rgba(109, 142, 247, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            min-width: 45px;
+            color: peru;
+        }
+
+        .karnaugh-cell {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .karnaugh-table.small .karnaugh-cell {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        /* Цвета для ячеек */
+        .k-cell-1 {
+            color: red;
+        }
+
+        .karnaugh-cell.green {
+            background-color: rgba(76, 175, 80, 0.3);
+            color: white;
+        }
+
+        .karnaugh-cell.blue {
+            background-color: rgba(33, 150, 243, 0.3);
+            color: white;
+        }
+
+        .karnaugh-cell.red {
+            background-color: rgba(244, 67, 54, 0.3);
+            color: white;
+        }
+
+        /* Контейнеры для примеров */
+        .karnaugh-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .karnaugh-example {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Блоки с пояснениями */
+        .explanation-box {
+            background: rgba(109, 142, 247, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .explanation-step {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+            .explanation-step:before {
+                content: "•";
+                color: var(--primary);
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                font-size: 1.2rem;
+            }
+
+        .formula-box {
+            background: rgba(76, 201, 240, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--success);
+        }
+
+        /* Мобильная адаптация для новых элементов */
+        @media (max-width: 768px) {
+            .table-wrapper {
+                margin: 1rem 0;
+                border-radius: 8px;
+            }
+
+            .data-table {
+                font-size: 12px;
+            }
+
+                .data-table th,
+                .data-table td {
+                    padding: 6px 4px;
+                }
+
+            .karnaugh-container {
+                margin: 1rem 0;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .karnaugh-table {
+                min-width: 300px;
+            }
+
+            .karnaugh-header {
+                padding: 8px 6px;
+                min-width: 40px;
+                font-size: 13px;
+            }
+
+            .karnaugh-cell {
+                width: 50px;
+                height: 50px;
+                font-size: 14px;
+            }
+
+            .karnaugh-table.small .karnaugh-cell {
+                width: 35px;
+                height: 35px;
+                font-size: 13px;
+            }
+
+            .karnaugh-examples {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .karnaugh-example {
+                padding: 1.2rem;
+            }
+
+            .explanation-box,
+            .formula-box {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
+            }
+
+            .explanation-step {
+                padding-left: 1.2rem;
+                margin-bottom: 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .karnaugh-table {
+                min-width: 280px;
+            }
+
+            .karnaugh-cell {
+                width: 45px;
+                height: 45px;
+                font-size: 13px;
+            }
+
+            .karnaugh-table.small .karnaugh-cell {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .karnaugh-examples {
+                gap: 1rem;
+            }
+
+            .karnaugh-example {
+                padding: 1rem;
+            }
+
+                .karnaugh-example h4 {
+                    font-size: 1rem;
+                    margin-bottom: 0.8rem;
+                }
     </style>
 </head>
 <body>
@@ -960,471 +1203,407 @@
                 <li>Каждая группа должна быть максимально возможного размера</li>
                 <li>Все единицы должны быть покрыты хотя бы одной группой</li>
                 <li>Предпочтительнее меньшее количество групп большего размера</li>
-            </ul>
+            </ul><br>
 
-            <h2 id="reshenie">Шаг 1: построение таблицы</h2>
-
+            <h2 id="reshenie">Шаг 1: построение таблицы истинности</h2>
             <p>F=1</p>
             <p>F=(x1,x2,x3,x4)= Σ(0,1,2,4,8,10,11,12)</p>
 
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-                <table border="1px" style="width: 300px; border-collapse: collapse;">
+            <div class="table-wrapper">
+                <table class="data-table">
                     <thead>
                         <tr>
-                            <th style="color: peru">№</th>
-                            <th style="color: peru">x1</th>
-                            <th style="color: peru">x2</th>
-                            <th style="color: peru">x3</th>
-                            <th style="color: peru">x4</th>
-                            <th style="color: peru">F</th>
+                            <th>№</th>
+                            <th>x1</th>
+                            <th>x2</th>
+                            <th>x3</th>
+                            <th>x4</th>
+                            <th>F</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th style="color: peru">0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">1</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">2</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">3</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">4</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">5</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">6</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">7</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">8</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">9</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">10</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">11</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">12</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">13</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">14</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                            <th>0</th>
-                        </tr>
-                        <tr>
-                            <th style="color: peru">15</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>1</th>
-                            <th>0</th>
-                        </tr>
+                        <tr><th>0</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><th>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+                        <tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><th>3</th><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+                        <tr><th>4</th><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><th>5</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><th>6</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+                        <tr><th>7</th><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+                        <tr><th>8</th><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><th>9</th><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><th>10</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+                        <tr><th>11</th><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+                        <tr><th>12</th><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+                        <tr><th>13</th><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                        <tr><th>14</th><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+                        <tr><th>15</th><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
                     </tbody>
                 </table>
-
-                <div class="steps" style="flex: 1; min-width: 300px;">
-                    <div class="step"><strong>Расставляем степени:</strong> Степени расставляются справа налево от единицы до n степени (оптимально до 8)</div>
-                    <div class="step"><strong>Заполняем таблицу:</strong> Расставляем числа начиная с 0. Количество 0 равно степени, нули с единицами чередуются</div>
-                    <div class="step"><strong>Определяем функцию:</strong> Смотрим на номер строки в таблице и сравниваем его с сигмой</div>
-                </div>
             </div>
 
-            <h2>Шаг 2: построение таблицы истинности</h2>
+            <div class="explanation-box">
+                <h4>Пояснение к таблице:</h4>
+                <div class="explanation-step">
+                    <strong>1. Расставляем степени:</strong> Степени расставляются справа налево от единицы до n степени (оптимально до 8)
+                </div>
+                <div class="explanation-step">
+                    <strong>2. Заполняем таблицу:</strong> Расставляем числа начиная с 0. Количество 0 равно степени, нули с единицами чередуются
+                </div>
+                <div class="explanation-step">
+                    <strong>3. Определяем функцию:</strong> Смотрим на номер строки в таблице и сравниваем его с сигмой
+                </div>
+            </div>
+            <h2>Шаг 2: построение карты</h2>
 
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-                <table border="1px" style="width: 375px; border-collapse: collapse;">
+            <div class="karnaugh-container">
+                <table class="karnaugh-table">
                     <tr>
-                        <th class="karnaugh-cell">.</th>
-                        <th class="karnaugh-cell" style="color: green">00</th>
-                        <th class="karnaugh-cell" style="color: peru">01</th>
-                        <th class="karnaugh-cell" style="color: peru">11</th>
-                        <th class="karnaugh-cell" style="color: peru">10</th>
+                        <th class="karnaugh-header">.</th>
+                        <th class="karnaugh-header">00</th>
+                        <th class="karnaugh-header">01</th>
+                        <th class="karnaugh-header">11</th>
+                        <th class="karnaugh-header">10</th>
                     </tr>
                     <tr>
-                        <th class="karnaugh-cell" style="color: green">00</th>
-                        <td class="karnaugh-cell" style="color: red">1</td>
+                        <th class="karnaugh-header">00</th>
+                        <td class="karnaugh-cell k-cell-1">1</td>
                         <td class="karnaugh-cell">1</td>
                         <td class="karnaugh-cell">1</td>
-                        <td class="karnaugh-cell">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell" style="color: peru">01</th>
-                        <td class="karnaugh-cell">1</td>
-                        <td class="karnaugh-cell">0</td>
-                        <td class="karnaugh-cell">0</td>
-                        <td class="karnaugh-cell">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell" style="color: peru">11</th>
-                        <td class="karnaugh-cell">0</td>
-                        <td class="karnaugh-cell">0</td>
-                        <td class="karnaugh-cell">0</td>
                         <td class="karnaugh-cell">1</td>
                     </tr>
                     <tr>
-                        <th class="karnaugh-cell" style="color: peru">10</th>
+                        <th class="karnaugh-header">01</th>
+                        <td class="karnaugh-cell">1</td>
+                        <td class="karnaugh-cell">0</td>
+                        <td class="karnaugh-cell">0</td>
+                        <td class="karnaugh-cell">0</td>
+                    </tr>
+                    <tr>
+                        <th class="karnaugh-header">11</th>
+                        <td class="karnaugh-cell">0</td>
+                        <td class="karnaugh-cell">0</td>
+                        <td class="karnaugh-cell">0</td>
+                        <td class="karnaugh-cell">1</td>
+                    </tr>
+                    <tr>
+                        <th class="karnaugh-header">10</th>
                         <td class="karnaugh-cell">1</td>
                         <td class="karnaugh-cell">0</td>
                         <td class="karnaugh-cell">0</td>
                         <td class="karnaugh-cell">1</td>
                     </tr>
                 </table>
+            </div>
 
-                <div class="steps" style="flex: 1; min-width: 300px;">
-                    <div class="step">Вертикальные ячейки соответствуют переменным x1 и x2, а горизонтальные x3 и x4</div>
-                    <div class="step">Смотрим в выше составленную таблицу и заполняем единицами совпадающие значения</div>
-                    <div class="step">Ищем все совпадения в таблицах и заполняем единицами, остальные - нулями</div>
+            <div class="explanation-box">
+                <h4>Пояснение:</h4>
+                <div class="explanation-step">
+                    Вертикальные ячейки соответствуют переменным x1 и x2, а горизонтальные x3 и x4
+                </div>
+                <div class="explanation-step">
+                    Смотрим в выше составленную таблицу. Если все иксы в таблице совпадают, то пишем 1 на пересечении
+                </div>
+                <div class="explanation-step">
+                    Ищем все совпадения и заполняем единицами, оставшиеся ячейки заполняем нулями
                 </div>
             </div>
 
             <h2>Шаг 3: склеивание единиц</h2>
 
-            <div class="tables-container">
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">1</td>
-                    </tr>
-                </table>
+            <div class="karnaugh-examples">
+                <div class="karnaugh-example">
+                    <h4>Ппо углам</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell green">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell green">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell green">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell green">1</td>
+                        </tr>
+                    </table>
+                </div>
 
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                </table>
+                <div class="karnaugh-example">
+                    <h4>По горизонтали</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell blue">1</td>
+                            <td class="karnaugh-cell blue">1</td>
+                            <td class="karnaugh-cell blue">1</td>
+                            <td class="karnaugh-cell blue">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                    </table>
+                </div>
 
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium" style="background-color: red;">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium" style="background-color: red;">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: red;">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: red;">1</td>
-                    </tr>
-                </table>
+                <div class="karnaugh-example">
+                    <h4>По вертикали</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell red">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell red">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell red">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell red">1</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
-            <div class="steps" style="width: 625px; margin-left: 350px; margin-top: -800px;">
-                <div class="step"><b>Склеивание едениц происходит по некоторым правилам:</b> <br>Склеивать нужно максимальное количество единиц <br>Склеивать можно по углам <br>Склеивать можно по вертикали и горизонтали(до 4 едениц)</div>
-                <div class="step">Зеленым цветом отмечены склеенные единицы по углам на первой таблице</div>
-                <div class="step">Синим цветом отмечены склеенные единицы по горизонтали на второй таблице</div>
-                <div class="step">Красным цветом отмечены склеенные единицы по вертикали на третьей таблице</div>
-                <h3>После склеивания определяем МДФ:</h3>
-                <p>В склеивании стоит помнить, что  разное количество склеенных единиц равняется разному количеству иксов:</p>
-                <p>1 = xxxx<br>2= xxx<br> 4 = xx<br> 8 = x</p>
-                <p>Так же нужно учитывать, что в МДФ, если 1, то равно x, если 0, то равно ¬x</p>
-                <h3>Построение МДФ:</h3>
-                <p>Для того чтобы рассчитать МДФ, нам нужно сначала выбрать склеенные единицы. возьмем к примеру склейки отмеченные красным цветом. 2 единицы слева находятся в строках 00 и 01, а так же в столбце 00. Смотрим на строки: первая связка распологается в ячейке 00 и 01 по горизонтали, где первое и второе число равно х3 и х4 соответственно, и 00 по вертикали, левое и правое число которого равно х1 и х2 соответственно. смотрим х3 и х4 напротив склеенных слева единиц: х3 = 0 и 0 в двух столбцах, что говорит о том что х3 будет инверсированным, х4 = 0 и 1. х4 меняет свое значение, что значит что его не будет в функции. Смотрим на 00 по вертикали: х1 = 0 и х2 = 0, значит записываем их в функцию ИНВЕРСИРОВАННЫМИ, так как значения равны 0. Далее рассмотрим склеенные единицы справа: по горизонтали х3 = 1 и 1, х4 = 1 и 0. Значения в х4 меняются, значит его тоже не будет в МДФ. Смотрим по вертикали: х1 = 1, х2 = 0, что значит что х2 будет инверсирован. Обе связи мы складываем<br>Запишем конечный ответ:<br>МДФ красной части = ¬х1¬х2¬х3 + х1¬х2х3</p>
+            <div class="explanation-box">
+                <h4>Правила склеивания:</h4>
+                <div class="explanation-step">
+                    <strong>Склеивать нужно максимальное количество единиц</strong>
+                </div>
+                <div class="explanation-step">
+                    <strong>Склеивать можно по углам</strong> (зеленый)
+                </div>
+                <div class="explanation-step">
+                    <strong>Склеивать можно по вертикали и горизонтали</strong> (красный и синий)
+                </div>
             </div>
 
-            <h1>Шаг 4: склеивание нулей</h1><br>
-
-            <div class="tables-container">
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                </table>
-
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: green;">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                </table>
-
-                <table border="1px" class="karnaugh-table-medium">
-                    <tr>
-                        <th class="karnaugh-cell-medium">.</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">00</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">01</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">0</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">11</th>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">0</td>
-                        <td class="karnaugh-cell-medium" style="background-color: blue;">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                    <tr>
-                        <th class="karnaugh-cell-medium" style="color: peru">10</th>
-                        <td class="karnaugh-cell-medium">1</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">0</td>
-                        <td class="karnaugh-cell-medium">1</td>
-                    </tr>
-                </table>
+            <h3>Построение МДФ:</h3>
+            <div class="formula-box">
+                <p>Количество склеенных единиц определяет количество переменных:</p>
+                <p>1 единица = xxxx<br>2 единицы = xxx<br>4 единицы = xx<br>8 единиц = x</p>
+                <p>Если значение 1, то пишем x, если 0, то пишем ¬x</p>
+                <p><strong>Пример для красной склейки:</strong> ¬х1¬х2¬х3 + х1¬х2х3</p>
             </div>
 
-            <div class="steps" style="width: 625px; margin-left: 350px; margin-top: -800px;">
-                <div class="step"><b>Склеивание нулей происходит по некоторым правилам:</b> <br>Склеивать нужно максимальное количество нулей <br>Склеивать можно по 8 нулей в форме прямоугольника <br>Склеивать можно по 4 нуля в форме квадрата<br>Склеивать можно по 2 нуля в форме прямоугольника</div>
-                <div class="step">Зеленым цветом отмечены склеенные нули по 4 на первой и второй таблицых</div>
-                <div class="step">Синим цветом отмечены склеенные нули по 2 на второй таблице</div>
-                <h3>После склеивания определяем МКФ:</h3>
-                <p>В склеивании стоит помнить, что  разное количество склеенных единиц равняется разному количеству иксов:</p>
-                <p>1 = xxxx<br>2= xxx<br> 4 = xx<br> 8 = x</p>
+            <h2>Шаг 4: склеивание нулей</h2>
 
-                <h3>Построение МКФ:</h3>
-                <p>МКФ составляется оп тому же принципу, что и МДФ, только инверсия применяется на единицы, вместо нулей. Тоесть, если взять таблицу с закрашенными в синий цвет значениями, получится, что х1 = 0, х2 = 0, х3 = 1, х4 = 1; х1 = 0, х2 = 1, х3 = 1, х4 = 1; х1 = 1, х2 = 1, х3 = 0, х4 = 1; х1 = 1, х2 = 0, х3 = 0, х4 = 1. <br>Из этого следует, что МКФ = ¬х2¬3 + ¬х2¬х4 + х1¬х3¬х4 + ¬х1х3¬х4</p>
+            <div class="karnaugh-examples">
+                <div class="karnaugh-example">
+                    <h4>По 4</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="karnaugh-example">
+                    <h4>По 4</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell green">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="karnaugh-example">
+                    <h4>По 2</h4>
+                    <table class="karnaugh-table small">
+                        <tr>
+                            <th class="karnaugh-header">.</th>
+                            <th class="karnaugh-header">00</th>
+                            <th class="karnaugh-header">01</th>
+                            <th class="karnaugh-header">11</th>
+                            <th class="karnaugh-header">10</th>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">00</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">01</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell blue">0</td>
+                            <td class="karnaugh-cell blue">0</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">11</th>
+                            <td class="karnaugh-cell blue">0</td>
+                            <td class="karnaugh-cell blue">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                        <tr>
+                            <th class="karnaugh-header">10</th>
+                            <td class="karnaugh-cell">1</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">0</td>
+                            <td class="karnaugh-cell">1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="explanation-box">
+                <h4>Правила склеивания нулей:</h4>
+                <div class="explanation-step">
+                    <strong>Склеивать нужно максимальное количество нулей</strong>
+                </div>
+                <div class="explanation-step">
+                    <strong>Склеивать можно по 8 нулей</strong> (прямоугольник)
+                </div>
+                <div class="explanation-step">
+                    <strong>Склеивать можно по 4 нуля</strong> (квадрат)
+                </div>
+                <div class="explanation-step">
+                    <strong>Склеивать можно по 2 нуля</strong> (прямоугольник)
+                </div>
+            </div>
+
+            <h3>Построение МКФ:</h3>
+            <div class="formula-box">
+                <p>Принцип такой же как для МДФ, но инверсия применяется на единицы</p>
+                <p><strong>Пример для синей склейки:</strong> ¬х2¬х3 + ¬х2¬х4 + х1¬х3¬х4 + ¬х1х3¬х4</p>
             </div>
         </section>
 
