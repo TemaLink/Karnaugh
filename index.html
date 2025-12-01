@@ -855,6 +855,31 @@ footer {
                 padding-bottom: 56.25%; /* Сохраняем соотношение 16:9 */
             }
         }
+
+        /* ФИКС: Гарантируем отображение таблиц */
+        @media (max-width: 768px) {
+            section#method .table-wrapper,
+            section#method .karnaugh-container,
+            section#method .karnaugh-examples {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+            }
+
+            section#method table {
+                display: table !important;
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+
+            section#method th,
+            section#method td {
+                display: table-cell !important;
+                visibility: visible !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1453,7 +1478,6 @@ footer {
                         title="Обучающий ролик по картам Карно">
                 </iframe>
             </div>
-        </section>
         </section>
     </main>
 
