@@ -804,13 +804,13 @@ footer {
             }
         }
 
-        /* Стили для видео-секции */
-        .video-section {
+        /* Стили ТОЛЬКО для видео-секции */
+        #video.card {
+            overflow: visible !important;
             width: 100%;
-            overflow: hidden;
         }
 
-        .video-container {
+        .video-container-wrapper {
             position: relative;
             width: 100%;
             max-width: 800px;
@@ -823,7 +823,7 @@ footer {
             background: var(--card-bg);
         }
 
-            .video-container iframe {
+            .video-container-wrapper iframe {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -833,24 +833,27 @@ footer {
                 border-radius: var(--border-radius);
             }
 
-        /* Мобильная адаптация для видео */
+        /* Мобильная адаптация ТОЛЬКО для видео */
         @media (max-width: 768px) {
-            .video-container {
+            #video.card {
+                padding: 1.2rem;
+            }
+
+            .video-container-wrapper {
                 max-width: 100%;
                 padding-bottom: 56.25%; /* Сохраняем соотношение 16:9 */
                 margin: 1rem 0;
             }
 
-                .video-container iframe {
+                .video-container-wrapper iframe {
                     border-radius: 10px;
                 }
         }
 
         @media (max-width: 480px) {
-            .video-container {
+            .video-container-wrapper {
                 padding-bottom: 56.25%; /* Сохраняем соотношение 16:9 */
             }
-        }
         }
     </style>
 </head>
@@ -1438,17 +1441,19 @@ footer {
             </div>
         </section>
 
-        <section id="video" class="card video-section">
+        <section id="video" class="card">
             <h2 style="text-align: center;">Мы подготовили обучающий видеоролик для вас!</h2>
             <br>
 
-            <div class="video-container">
+            <div class="video-container-wrapper">
                 <iframe src="https://rutube.ru/play/embed/220434ee0ec6d03888534a753d4209bf"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                        allowfullscreen
+                        title="Обучающий ролик по картам Карно">
                 </iframe>
             </div>
+        </section>
         </section>
     </main>
 
