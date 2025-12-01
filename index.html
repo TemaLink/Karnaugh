@@ -487,21 +487,310 @@ footer {
     }
 }
 
-        /* Новые стили для адаптивных таблиц */
+/* ========== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ========== */
+        @media (max-width: 768px) {
+            /* Общие стили */
+            .container {
+                padding: 0 15px;
+            }
+
+            header {
+                padding: 1.5rem 0;
+            }
+
+                header h1 {
+                    font-size: 2rem;
+                }
+
+            .tagline {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            /* Навигация */
+            .nav-links {
+                padding: 0.5rem 0;
+                gap: 0.3rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+                border-radius: 15px;
+            }
+
+            /* Карточки */
+            .card {
+                padding: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+                margin: 1.2rem 0 0.8rem 0;
+            }
+
+            /* Карточка изобретателя */
+            .inventor-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1.2rem;
+            }
+
+            .inventor-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* Сетка фич */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .feature {
+                padding: 1.2rem;
+            }
+
+            /* Шаги - только для .steps без inline стилей */
+            .steps:not([style]) {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
+            }
+
+            .step {
+                padding-left: 2.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+                .step:before {
+                    width: 25px;
+                    height: 25px;
+                    font-size: 0.8rem;
+                }
+
+            /* Основные таблицы в методе */
+            table {
+                width: 100% !important;
+                max-width: 100%;
+                font-size: 12px;
+                display: block;
+                overflow-x: auto;
+            }
+
+            .karnaugh-cell {
+                min-width: 40px;
+                min-height: 40px;
+                font-size: 11px;
+                padding: 2px;
+            }
+
+            /* Таблицы в контейнерах */
+            section#method .tables-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 280px !important;
+                height: auto !important;
+                margin: 0 auto;
+            }
+
+            section#method .karnaugh-cell-medium {
+                width: 35px;
+                height: 35px;
+                font-size: 11px;
+                padding: 2px;
+            }
+
+            /* Контейнеры с таблицами Карно */
+            .tables-container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 20px !important;
+            }
+
+            /* Исправление для шагов с inline стилями - ТОЛЬКО те, что рядом с таблицами */
+            section#method .steps[style*="margin-left"],
+            section#method .steps[style*="margin-top"],
+            section#method .steps[style*="width"] {
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                margin: 20px 0 !important;
+                padding: 1.2rem !important;
+                left: 0 !important;
+                top: 0 !important;
+            }
+
+            /* Обеспечиваем правильное отображение секций */
+            section#method > .steps:not([style]) {
+                margin: 1.5rem 0;
+            }
+
+            /* Видео */
+            iframe {
+                width: 100% !important;
+                max-width: 100%;
+                height: 250px !important;
+            }
+
+            /* Футер */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            /* Иконки разделов */
+            .section-icon {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                margin-right: 8px;
+                font-size: 0.8rem;
+            }
+
+            /* Математические символы */
+            .math-symbol {
+                font-size: 0.9rem;
+                padding: 0.1rem 0.3rem;
+            }
+
+            /* Инфобоксы */
+            .info-box, .advantages {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
+            }
+        }
+        /* Очень маленькие экраны */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header h1 {
+                font-size: 1.7rem;
+            }
+
+            .tagline {
+                font-size: 0.9rem;
+            }
+
+            .nav-link {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.75rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .karnaugh-cell {
+                min-width: 35px;
+                min-height: 35px;
+                font-size: 10px;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 240px !important;
+            }
+
+            section#method .karnaugh-cell-medium {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            iframe {
+                height: 200px !important;
+            }
+        }
+
+        /* Ландшафтная ориентация */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .nav-links {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+
+            .inventor-card {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            section#method .tables-container {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 220px !important;
+            }
+        }
+
+        /* Очень маленькие телефоны */
+        @media (max-width: 350px) {
+            html {
+                font-size: 14px;
+            }
+
+            .nav-link {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .karnaugh-cell {
+                min-width: 30px;
+                min-height: 30px;
+                font-size: 9px;
+            }
+
+            section#method .karnaugh-table-medium {
+                width: 200px !important;
+            }
+
+            section#method .karnaugh-cell-medium {
+                width: 25px;
+                height: 25px;
+                font-size: 9px;
+            }
+        }
         .table-wrapper {
             overflow-x: auto;
             margin: 1.5rem 0;
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
         }
 
         .data-table {
             width: 100%;
-            min-width: 100%;
             border-collapse: collapse;
             font-size: 14px;
-            table-layout: fixed;
         }
 
             .data-table th,
@@ -509,7 +798,6 @@ footer {
                 padding: 10px 8px;
                 text-align: center;
                 border: 1px solid rgba(255, 255, 255, 0.2);
-                word-wrap: break-word;
             }
 
             .data-table thead th {
@@ -529,22 +817,18 @@ footer {
         /* Контейнеры для карт Карно */
         .karnaugh-container {
             margin: 1.5rem 0;
-            width: 100%;
-            overflow-x: auto;
+            display: flex;
+            justify-content: center;
         }
 
         .karnaugh-table {
-            width: 100%;
-            min-width: 100%;
             border-collapse: collapse;
             border: 2px solid var(--primary);
             background: rgba(255, 255, 255, 0.05);
-            table-layout: fixed;
         }
 
             .karnaugh-table.small {
-                width: 100%;
-                min-width: 100%;
+                max-width: 280px;
             }
 
         .karnaugh-header {
@@ -552,17 +836,24 @@ footer {
             background: rgba(109, 142, 247, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
+            min-width: 45px;
             color: peru;
-            word-wrap: break-word;
         }
 
         .karnaugh-cell {
+            width: 60px;
+            height: 60px;
             text-align: center;
             vertical-align: middle;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 500;
             font-size: 16px;
-            word-wrap: break-word;
+        }
+
+        .karnaugh-table.small .karnaugh-cell {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
         }
 
         /* Цвета для ячеек */
@@ -591,7 +882,6 @@ footer {
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
-            width: 100%;
         }
 
         .karnaugh-example {
@@ -600,7 +890,6 @@ footer {
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            width: 100%;
         }
 
         /* Блоки с пояснениями */
@@ -610,7 +899,6 @@ footer {
             border-radius: var(--border-radius);
             margin: 1.5rem 0;
             border-left: 4px solid var(--primary);
-            width: 100%;
         }
 
         .explanation-step {
@@ -635,280 +923,104 @@ footer {
             border-radius: var(--border-radius);
             margin: 1.5rem 0;
             border-left: 4px solid var(--success);
-            width: 100%;
         }
 
-        /* ========== МОБИЛЬНАЯ ВЕРСИЯ (ВЫСОКИЙ ПРИОРИТЕТ) ========== */
-        @media screen and (max-width: 768px) {
-            /* БАЗОВЫЕ ИСПРАВЛЕНИЯ */
-            body {
-                overflow-x: hidden;
-                width: 100%;
+        /* Мобильная адаптация для новых элементов */
+        @media (max-width: 768px) {
+            .table-wrapper {
+                margin: 1rem 0;
+                border-radius: 8px;
             }
 
-            .container {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0 15px !important;
-                margin: 0 auto !important;
+            .data-table {
+                font-size: 12px;
             }
 
-            /* ШАПКА */
-            header {
-                padding: 1.5rem 0 !important;
-            }
-
-                header h1 {
-                    font-size: 1.8rem !important;
-                    text-align: center;
+                .data-table th,
+                .data-table td {
+                    padding: 6px 4px;
                 }
 
-            .tagline {
-                font-size: 1rem !important;
-                padding: 0 10px;
-            }
-
-            /* НАВИГАЦИЯ */
-            nav {
-                padding: 0.8rem 0 !important;
-            }
-
-            .nav-links {
-                display: flex !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 5px;
-            }
-
-            .nav-link {
-                font-size: 0.8rem !important;
-                padding: 0.5rem 0.8rem !important;
-                white-space: nowrap;
-                flex-shrink: 0;
-            }
-
-            /* СЕКЦИИ И КАРТОЧКИ */
-            main.container {
-                padding: 0 15px !important;
-                width: 100% !important;
-            }
-
-            .card {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 1.2rem !important;
-                margin: 1rem 0 !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            h2 {
-                font-size: 1.5rem !important;
-            }
-
-            h3 {
-                font-size: 1.3rem !important;
-            }
-
-            /* ТАБЛИЦЫ - САМОЕ ВАЖНОЕ! */
-            .table-wrapper {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow-x: auto !important;
-                margin: 1rem 0 !important;
-                border: 1px solid rgba(255,255,255,0.2) !important;
-                border-radius: 8px !important;
-                background: var(--card-bg) !important;
-            }
-
-            table {
-                display: table !important;
-                width: 100% !important;
-                min-width: 100% !important;
-                table-layout: auto !important;
-                border-collapse: collapse !important;
-                font-size: 12px !important;
-                margin: 0 !important;
-            }
-
-            th, td {
-                display: table-cell !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                padding: 8px 6px !important;
-                border: 1px solid rgba(255,255,255,0.2) !important;
-                text-align: center !important;
-                min-width: 40px !important;
-            }
-
-            /* КАРТЫ КАРНО */
             .karnaugh-container {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow-x: auto !important;
-                margin: 1rem 0 !important;
-                padding: 10px 0 !important;
+                margin: 1rem 0;
+                overflow-x: auto;
+                justify-content: flex-start;
             }
 
             .karnaugh-table {
-                width: auto !important;
-                min-width: 300px !important;
-                margin: 0 auto !important;
-                border: 2px solid var(--primary) !important;
+                min-width: 300px;
             }
 
             .karnaugh-header {
-                padding: 10px !important;
-                min-width: 50px !important;
+                padding: 8px 6px;
+                min-width: 40px;
+                font-size: 13px;
             }
 
             .karnaugh-cell {
-                width: 50px !important;
-                height: 50px !important;
-                font-size: 14px !important;
-                padding: 5px !important;
+                width: 50px;
+                height: 50px;
+                font-size: 14px;
             }
 
-            /* КОНТЕЙНЕРЫ С ПРИМЕРАМИ */
+            .karnaugh-table.small .karnaugh-cell {
+                width: 35px;
+                height: 35px;
+                font-size: 13px;
+            }
+
             .karnaugh-examples {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                gap: 1.5rem !important;
-                margin: 1.5rem 0 !important;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 1.5rem 0;
             }
 
             .karnaugh-example {
-                width: 100% !important;
-                padding: 1rem !important;
-                overflow-x: auto !important;
+                padding: 1.2rem;
             }
 
-                .karnaugh-example table {
-                    min-width: 280px !important;
-                    margin: 0 auto !important;
-                }
-
-            /* ПОЯСНЕНИЯ */
             .explanation-box,
-            .formula-box,
-            .steps {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 1.2rem !important;
-                margin: 1rem 0 !important;
-                display: block !important;
-                position: static !important;
-                left: 0 !important;
-                right: 0 !important;
-                top: 0 !important;
-                height: auto !important;
+            .formula-box {
+                padding: 1.2rem;
+                margin: 1.2rem 0;
             }
 
-            /* ВИДЕО */
-            #video.card {
-                padding: 1.2rem !important;
-            }
-
-            .video-container-wrapper {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding-bottom: 56.25% !important;
-                margin: 1rem 0 !important;
-            }
-
-            /* ФУТЕР */
-            footer {
-                padding: 2rem 1rem !important;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr !important;
-                text-align: center !important;
-                gap: 1.5rem !important;
-            }
-
-            /* ИНВЕНТОР КАРД */
-            .inventor-card {
-                flex-direction: column !important;
-                text-align: center !important;
-                padding: 1rem !important;
-            }
-
-            .inventor-photo {
-                width: 100px !important;
-                height: 100px !important;
-            }
-
-            /* СЕТКА ФИЧ */
-            .features-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
-            }
-
-            .feature {
-                padding: 1rem !important;
+            .explanation-step {
+                padding-left: 1.2rem;
+                margin-bottom: 0.8rem;
+                font-size: 0.95rem;
             }
         }
 
-        /* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
-        @media screen and (max-width: 480px) {
-            header h1 {
-                font-size: 1.6rem !important;
-            }
-
-            .tagline {
-                font-size: 0.9rem !important;
-            }
-
-            .nav-link {
-                font-size: 0.75rem !important;
-                padding: 0.4rem 0.7rem !important;
-            }
-
-            .card {
-                padding: 1rem !important;
-            }
-
-            h2 {
-                font-size: 1.4rem !important;
-            }
-
-            h3 {
-                font-size: 1.2rem !important;
-            }
-
+        @media (max-width: 480px) {
             .karnaugh-table {
-                min-width: 280px !important;
+                min-width: 280px;
             }
 
             .karnaugh-cell {
-                width: 45px !important;
-                height: 45px !important;
-                font-size: 13px !important;
+                width: 45px;
+                height: 45px;
+                font-size: 13px;
             }
 
-            th, td {
-                padding: 6px 4px !important;
-                font-size: 11px !important;
+            .karnaugh-table.small .karnaugh-cell {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
             }
-        }
 
-        /* ЛАНДШАФТНАЯ ОРИЕНТАЦИЯ */
-        @media screen and (max-width: 768px) and (orientation: landscape) {
             .karnaugh-examples {
-                flex-direction: row !important;
-                flex-wrap: wrap !important;
+                gap: 1rem;
             }
 
             .karnaugh-example {
-                flex: 1 1 300px !important;
-                min-width: 280px !important;
+                padding: 1rem;
             }
-        }
+
+                .karnaugh-example h4 {
+                    font-size: 1rem;
+                    margin-bottom: 0.8rem;
+                }
     </style>
 </head>
 <body>
@@ -1343,6 +1455,7 @@ footer {
                 <p>1 единица = xxxx<br>2 единицы = xxx<br>4 единицы = xx<br>8 единиц = x</p>
                 <p>Если значение 1, то пишем x, если 0, то пишем ¬x</p>
                 <p><strong>Пример для красной склейки:</strong> ¬х1¬х2¬х3 + х1¬х2х3</p>
+                <p>Для того чтобы рассчитать МДФ, нам нужно сначала выбрать склеенные единицы. возьмем к примеру склейки отмеченные красным цветом. 2 единицы слева находятся в строках 00 и 01, а так же в столбце 00. Смотрим на строки: первая связка распологается в ячейке 00 и 01 по горизонтали, где первое и второе число равно х3 и х4 соответственно, и 00 по вертикали, левое и правое число которого равно х1 и х2 соответственно. смотрим х3 и х4 напротив склеенных слева единиц: х3 = 0 и 0 в двух столбцах, что говорит о том что х3 будет инверсированным, х4 = 0 и 1. х4 меняет свое значение, что значит что его не будет в функции. Смотрим на 00 по вертикали: х1 = 0 и х2 = 0, значит записываем их в функцию ИНВЕРСИРОВАННЫМИ, так как значения равны 0. Далее рассмотрим склеенные единицы справа: по горизонтали х3 = 1 и 1, х4 = 1 и 0. Значения в х4 меняются, значит его тоже не будет в МДФ. Смотрим по вертикали: х1 = 1, х2 = 0, что значит что х2 будет инверсирован. Обе связи мы складываем<br>Запишем конечный ответ:<br>МДФ красной части = ¬х1¬х2¬х3 + х1¬х2х3</p></p>
             </div>
 
             <h2>Шаг 4: склеивание нулей</h2>
@@ -1496,15 +1609,14 @@ footer {
         </section>
 
         <section id="video" class="card">
-            <h2 style="text-align: center;">Мы подготовили обучающий видеоролик для вас!</h2>
-            <br>
+            <h1 style="text-align: center;">Мы подготовили обучающий видеоролик для вас!</h1>
 
-            <div class="video-container-wrapper">
+            <div style="text-align: center;">
                 <iframe src="https://rutube.ru/play/embed/220434ee0ec6d03888534a753d4209bf"
                         frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
-                        title="Обучающий ролик по картам Карно">
+                        width="640"
+                        height="360">
                 </iframe>
             </div>
         </section>
