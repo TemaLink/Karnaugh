@@ -469,328 +469,21 @@ footer {
 }
 
 /* Десктопные стили */
-@media (min-width: 769px) {
-    .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow-x: visible;
-    }
-    
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
-    }
-    
-    /* Позиционирование для десктопа */
-    .steps[style*="margin-left"] {
-        position: absolute;
-    }
-}
-
-/* ========== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ========== */
-        @media (max-width: 768px) {
-            /* Общие стили */
-            .container {
-                padding: 0 15px;
-            }
-
-            header {
-                padding: 1.5rem 0;
-            }
-
-                header h1 {
-                    font-size: 2rem;
-                }
-
-            .tagline {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-
-            /* Навигация */
-            .nav-links {
-                padding: 0.5rem 0;
-                gap: 0.3rem;
-            }
-
-            .nav-link {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.8rem;
-                border-radius: 15px;
-            }
-
-            /* Карточки */
-            .card {
-                padding: 1.2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-                margin: 1.2rem 0 0.8rem 0;
-            }
-
-            /* Карточка изобретателя */
-            .inventor-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1.2rem;
-            }
-
-            .inventor-photo {
-                width: 100px;
-                height: 100px;
-            }
-
-            /* Сетка фич */
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                margin: 1.5rem 0;
-            }
-
-            .feature {
-                padding: 1.2rem;
-            }
-
-            /* Шаги - только для .steps без inline стилей */
-            .steps:not([style]) {
-                padding: 1.2rem;
-                margin: 1.2rem 0;
-            }
-
-            .step {
-                padding-left: 2.5rem;
-                margin-bottom: 1.2rem;
-            }
-
-                .step:before {
-                    width: 25px;
-                    height: 25px;
-                    font-size: 0.8rem;
-                }
-
-            /* Основные таблицы в методе */
-            table {
-                width: 100% !important;
-                max-width: 100%;
-                font-size: 12px;
-                display: block;
-                overflow-x: auto;
-            }
-
-            .karnaugh-cell {
-                min-width: 40px;
-                min-height: 40px;
-                font-size: 11px;
-                padding: 2px;
-            }
-
-            /* Таблицы в контейнерах */
-            section#method .tables-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            section#method .karnaugh-table-medium {
-                width: 280px !important;
-                height: auto !important;
-                margin: 0 auto;
-            }
-
-            section#method .karnaugh-cell-medium {
-                width: 35px;
-                height: 35px;
-                font-size: 11px;
-                padding: 2px;
-            }
-
-            /* Контейнеры с таблицами Карно */
-            .tables-container {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 20px !important;
-            }
-
-            /* Исправление для шагов с inline стилями - ТОЛЬКО те, что рядом с таблицами */
-            section#method .steps[style*="margin-left"],
-            section#method .steps[style*="margin-top"],
-            section#method .steps[style*="width"] {
-                position: relative !important;
-                width: 100% !important;
-                height: auto !important;
-                margin: 20px 0 !important;
-                padding: 1.2rem !important;
-                left: 0 !important;
-                top: 0 !important;
-            }
-
-            /* Обеспечиваем правильное отображение секций */
-            section#method > .steps:not([style]) {
-                margin: 1.5rem 0;
-            }
-
-            /* Видео */
-            iframe {
-                width: 100% !important;
-                max-width: 100%;
-                height: 250px !important;
-            }
-
-            /* Футер */
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                text-align: center;
-            }
-
-            .footer-section {
-                text-align: center;
-            }
-
-            /* Иконки разделов */
-            .section-icon {
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-                margin-right: 8px;
-                font-size: 0.8rem;
-            }
-
-            /* Математические символы */
-            .math-symbol {
-                font-size: 0.9rem;
-                padding: 0.1rem 0.3rem;
-            }
-
-            /* Инфобоксы */
-            .info-box, .advantages {
-                padding: 1.2rem;
-                margin: 1.2rem 0;
-            }
-        }
-        /* Очень маленькие экраны */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 10px;
-            }
-
-            header h1 {
-                font-size: 1.7rem;
-            }
-
-            .tagline {
-                font-size: 0.9rem;
-            }
-
-            .nav-link {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.75rem;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            h3 {
-                font-size: 1.1rem;
-            }
-
-            .karnaugh-cell {
-                min-width: 35px;
-                min-height: 35px;
-                font-size: 10px;
-            }
-
-            section#method .karnaugh-table-medium {
-                width: 240px !important;
-            }
-
-            section#method .karnaugh-cell-medium {
-                width: 30px;
-                height: 30px;
-                font-size: 10px;
-            }
-
-            iframe {
-                height: 200px !important;
-            }
-        }
-
-        /* Ландшафтная ориентация */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .nav-links {
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-            }
-
-            .inventor-card {
-                flex-direction: row;
-                text-align: left;
-            }
-
-            section#method .tables-container {
-                flex-direction: row !important;
-                flex-wrap: wrap !important;
-                justify-content: center !important;
-            }
-
-            section#method .karnaugh-table-medium {
-                width: 220px !important;
-            }
-        }
-
-        /* Очень маленькие телефоны */
-        @media (max-width: 350px) {
-            html {
-                font-size: 14px;
-            }
-
-            .nav-link {
-                font-size: 0.7rem;
-                padding: 0.3rem 0.6rem;
-            }
-
-            .karnaugh-cell {
-                min-width: 30px;
-                min-height: 30px;
-                font-size: 9px;
-            }
-
-            section#method .karnaugh-table-medium {
-                width: 200px !important;
-            }
-
-            section#method .karnaugh-cell-medium {
-                width: 25px;
-                height: 25px;
-                font-size: 9px;
-            }
-        }
+        /* Новые стили для адаптивных таблиц */
         .table-wrapper {
             overflow-x: auto;
             margin: 1.5rem 0;
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
         }
 
         .data-table {
             width: 100%;
+            min-width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            table-layout: fixed;
         }
 
             .data-table th,
@@ -798,6 +491,7 @@ footer {
                 padding: 10px 8px;
                 text-align: center;
                 border: 1px solid rgba(255, 255, 255, 0.2);
+                word-wrap: break-word;
             }
 
             .data-table thead th {
@@ -817,18 +511,22 @@ footer {
         /* Контейнеры для карт Карно */
         .karnaugh-container {
             margin: 1.5rem 0;
-            display: flex;
-            justify-content: center;
+            width: 100%;
+            overflow-x: auto;
         }
 
         .karnaugh-table {
+            width: 100%;
+            min-width: 100%;
             border-collapse: collapse;
             border: 2px solid var(--primary);
             background: rgba(255, 255, 255, 0.05);
+            table-layout: fixed;
         }
 
             .karnaugh-table.small {
-                max-width: 280px;
+                width: 100%;
+                min-width: 100%;
             }
 
         .karnaugh-header {
@@ -836,24 +534,17 @@ footer {
             background: rgba(109, 142, 247, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            min-width: 45px;
             color: peru;
+            word-wrap: break-word;
         }
 
         .karnaugh-cell {
-            width: 60px;
-            height: 60px;
             text-align: center;
             vertical-align: middle;
             border: 1px solid rgba(255, 255, 255, 0.2);
             font-weight: 500;
             font-size: 16px;
-        }
-
-        .karnaugh-table.small .karnaugh-cell {
-            width: 40px;
-            height: 40px;
-            font-size: 14px;
+            word-wrap: break-word;
         }
 
         /* Цвета для ячеек */
@@ -882,6 +573,7 @@ footer {
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
+            width: 100%;
         }
 
         .karnaugh-example {
@@ -890,6 +582,7 @@ footer {
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            width: 100%;
         }
 
         /* Блоки с пояснениями */
@@ -899,6 +592,7 @@ footer {
             border-radius: var(--border-radius);
             margin: 1.5rem 0;
             border-left: 4px solid var(--primary);
+            width: 100%;
         }
 
         .explanation-step {
@@ -923,6 +617,7 @@ footer {
             border-radius: var(--border-radius);
             margin: 1.5rem 0;
             border-left: 4px solid var(--success);
+            width: 100%;
         }
 
         /* Мобильная адаптация для новых элементов */
@@ -930,42 +625,52 @@ footer {
             .table-wrapper {
                 margin: 1rem 0;
                 border-radius: 8px;
+                overflow-x: auto;
             }
 
             .data-table {
                 font-size: 12px;
+                table-layout: auto;
             }
 
                 .data-table th,
                 .data-table td {
-                    padding: 6px 4px;
+                    padding: 8px 6px;
+                    min-width: 40px;
                 }
 
             .karnaugh-container {
                 margin: 1rem 0;
-                overflow-x: auto;
-                justify-content: flex-start;
+                overflow-x: visible;
             }
 
             .karnaugh-table {
-                min-width: 300px;
+                width: 100%;
+                min-width: 100%;
+                table-layout: fixed;
             }
 
+                .karnaugh-table.small {
+                    width: 100%;
+                    min-width: 100%;
+                }
+
             .karnaugh-header {
-                padding: 8px 6px;
-                min-width: 40px;
+                padding: 10px 6px;
                 font-size: 13px;
+                min-width: 0;
             }
 
             .karnaugh-cell {
-                width: 50px;
-                height: 50px;
+                width: auto;
+                height: 60px;
                 font-size: 14px;
+                padding: 5px;
+                min-width: 0;
             }
 
             .karnaugh-table.small .karnaugh-cell {
-                width: 35px;
-                height: 35px;
+                height: 50px;
                 font-size: 13px;
             }
 
@@ -977,6 +682,7 @@ footer {
 
             .karnaugh-example {
                 padding: 1.2rem;
+                overflow-x: auto;
             }
 
             .explanation-box,
@@ -993,19 +699,29 @@ footer {
         }
 
         @media (max-width: 480px) {
-            .karnaugh-table {
-                min-width: 280px;
+            .data-table {
+                font-size: 11px;
+            }
+
+                .data-table th,
+                .data-table td {
+                    padding: 6px 4px;
+                    min-width: 35px;
+                }
+
+            .karnaugh-header {
+                padding: 8px 4px;
+                font-size: 12px;
             }
 
             .karnaugh-cell {
-                width: 45px;
-                height: 45px;
+                height: 50px;
                 font-size: 13px;
+                padding: 4px;
             }
 
             .karnaugh-table.small .karnaugh-cell {
-                width: 30px;
-                height: 30px;
+                height: 45px;
                 font-size: 12px;
             }
 
@@ -1021,6 +737,54 @@ footer {
                     font-size: 1rem;
                     margin-bottom: 0.8rem;
                 }
+
+            /* Для очень маленьких экранов делаем таблицы еще компактнее */
+            @media (max-width: 360px) {
+                .karnaugh-cell {
+                    height: 45px;
+                    font-size: 12px;
+                }
+
+                .karnaugh-table.small .karnaugh-cell {
+                    height: 40px;
+                    font-size: 11px;
+                }
+
+                .data-table th,
+                .data-table td {
+                    padding: 4px 3px;
+                    min-width: 30px;
+                }
+            }
+        }
+
+        /* Для ландшафтной ориентации на телефонах */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .karnaugh-examples {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .karnaugh-cell {
+                height: 50px;
+            }
+
+            .karnaugh-table.small .karnaugh-cell {
+                height: 40px;
+            }
+        }
+
+        /* Для планшетов */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .karnaugh-cell {
+                height: 70px;
+                font-size: 15px;
+            }
+
+            .karnaugh-table.small .karnaugh-cell {
+                height: 55px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1203,9 +967,9 @@ footer {
                 <li>Каждая группа должна быть максимально возможного размера</li>
                 <li>Все единицы должны быть покрыты хотя бы одной группой</li>
                 <li>Предпочтительнее меньшее количество групп большего размера</li>
-            </ul><br>
+            </ul>
 
-            <h2 id="reshenie">Шаг 1: построение таблицы истинности</h2>
+            <h2 id="reshenie">Шаг 1: построение таблицы</h2>
             <p>F=1</p>
             <p>F=(x1,x2,x3,x4)= Σ(0,1,2,4,8,10,11,12)</p>
 
@@ -1254,7 +1018,7 @@ footer {
                     <strong>3. Определяем функцию:</strong> Смотрим на номер строки в таблице и сравниваем его с сигмой
                 </div>
             </div>
-            <h2>Шаг 2: построение карты</h2>
+            <h2>Шаг 2: построение таблицы истинности</h2>
 
             <div class="karnaugh-container">
                 <table class="karnaugh-table">
@@ -1313,7 +1077,7 @@ footer {
 
             <div class="karnaugh-examples">
                 <div class="karnaugh-example">
-                    <h4>Ппо углам</h4>
+                    <h4>Пример 1: Склеивание по углам</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1354,7 +1118,7 @@ footer {
                 </div>
 
                 <div class="karnaugh-example">
-                    <h4>По горизонтали</h4>
+                    <h4>Пример 2: Склеивание по горизонтали</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1395,7 +1159,7 @@ footer {
                 </div>
 
                 <div class="karnaugh-example">
-                    <h4>По вертикали</h4>
+                    <h4>Пример 3: Склеивание по вертикали</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1455,14 +1219,13 @@ footer {
                 <p>1 единица = xxxx<br>2 единицы = xxx<br>4 единицы = xx<br>8 единиц = x</p>
                 <p>Если значение 1, то пишем x, если 0, то пишем ¬x</p>
                 <p><strong>Пример для красной склейки:</strong> ¬х1¬х2¬х3 + х1¬х2х3</p>
-                <p>Для того чтобы рассчитать МДФ, нам нужно сначала выбрать склеенные единицы. возьмем к примеру склейки отмеченные красным цветом. 2 единицы слева находятся в строках 00 и 01, а так же в столбце 00. Смотрим на строки: первая связка распологается в ячейке 00 и 01 по горизонтали, где первое и второе число равно х3 и х4 соответственно, и 00 по вертикали, левое и правое число которого равно х1 и х2 соответственно. смотрим х3 и х4 напротив склеенных слева единиц: х3 = 0 и 0 в двух столбцах, что говорит о том что х3 будет инверсированным, х4 = 0 и 1. х4 меняет свое значение, что значит что его не будет в функции. Смотрим на 00 по вертикали: х1 = 0 и х2 = 0, значит записываем их в функцию ИНВЕРСИРОВАННЫМИ, так как значения равны 0. Далее рассмотрим склеенные единицы справа: по горизонтали х3 = 1 и 1, х4 = 1 и 0. Значения в х4 меняются, значит его тоже не будет в МДФ. Смотрим по вертикали: х1 = 1, х2 = 0, что значит что х2 будет инверсирован. Обе связи мы складываем<br>Запишем конечный ответ:<br>МДФ красной части = ¬х1¬х2¬х3 + х1¬х2х3</p>
             </div>
 
             <h2>Шаг 4: склеивание нулей</h2>
 
             <div class="karnaugh-examples">
                 <div class="karnaugh-example">
-                    <h4>По 4</h4>
+                    <h4>Пример 1: Склеивание по 4</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1503,7 +1266,7 @@ footer {
                 </div>
 
                 <div class="karnaugh-example">
-                    <h4>По 4</h4>
+                    <h4>Пример 2: Другое склеивание по 4</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1544,7 +1307,7 @@ footer {
                 </div>
 
                 <div class="karnaugh-example">
-                    <h4>По 2</h4>
+                    <h4>Пример 3: Склеивание по 2</h4>
                     <table class="karnaugh-table small">
                         <tr>
                             <th class="karnaugh-header">.</th>
@@ -1605,19 +1368,6 @@ footer {
             <div class="formula-box">
                 <p>Принцип такой же как для МДФ, но инверсия применяется на единицы</p>
                 <p><strong>Пример для синей склейки:</strong> ¬х2¬х3 + ¬х2¬х4 + х1¬х3¬х4 + ¬х1х3¬х4</p>
-            </div>
-        </section>
-
-        <section id="video" class="card">
-            <h1 style="text-align: center;">Мы подготовили обучающий видеоролик для вас!</h1>
-
-            <div style="text-align: center;">
-                <iframe src="https://rutube.ru/play/embed/220434ee0ec6d03888534a753d4209bf"
-                        frameborder="0"
-                        allowfullscreen
-                        width="640"
-                        height="360">
-                </iframe>
             </div>
         </section>
     </main>
